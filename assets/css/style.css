@@ -1,0 +1,108 @@
+.job-listing-container {    
+    color: rgb(0, 0, 0);
+}
+
+.job-header .company-logo{
+    width: 80px;
+    height: 80px;
+    border-radius: 100px;
+}
+
+.job-header .job-title h2{
+    color: rgb(0, 0, 0);
+    margin-bottom: 0 !important;
+}
+
+.job-header .job-title h2.no-typography{
+    font-size: 25px !important;
+    font-weight: 600 !important;
+}
+
+.job-header .job-company{
+    color: rgb(0, 0, 0);
+    margin-bottom: 0 !important;
+}
+
+
+.job-header .job-company.no-typography{
+    font-size: 14px !important;
+}
+
+.job-header .job-date{
+    color: rgba(0, 0, 0, 0.6);
+    margin-bottom: 0 !important;
+}
+
+.job-header .job-date.no-typography{
+    font-size: 12px !important;
+}
+
+.job-detail{
+    padding-top: 30px;
+    padding-bottom: 30px;    
+	text-align: left;
+}
+
+.job-detail.no-typography{
+    font-size: 17px !important;
+    font-weight: 400 !important;
+}
+
+.info-box{
+    padding-left: auto;
+    padding-right: auto;
+}
+
+.info-box .icon-box{
+    min-width: 240px;
+}
+
+.info-box .at-icon-box-icon{
+background-color: #fff4ee;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+}
+
+.info-box .at-icon-box-icon svg,
+.info-box .at-icon-box-icon i{
+    width: 20px;
+    height: 20px;    
+    font-size: 20px !important;
+    color: #AC6C47;
+    fill: #AC6C47;
+}
+
+.info-box .at-icon-text{
+    padding: 0 5px;
+}
+
+.info-box .at-icon-text .box-title{
+    color: rgb(0, 0, 0);
+    margin-bottom: 0 !important;
+}
+
+.info-box .at-icon-text .box-title.no-typography{
+    font-size: 13px !important;
+    line-height: 1.5 !important;
+    font-weight: 600 !important;
+}
+
+.info-box .at-icon-text .box-description{
+    color: rgb(0, 0, 0);
+    margin-bottom: 0px !important;
+}
+
+
+.info-box .at-icon-text .box-description.no-typography{
+    font-size: 15px !important;
+    line-height: 1.5 !important;
+}
+
+.col-3 {
+    flex: 0 0 20% !important;
+    max-width: 20% !important;
+}
