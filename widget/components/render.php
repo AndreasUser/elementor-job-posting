@@ -120,7 +120,7 @@ function renderHtml($settings){
                     <div class="col-8 col-md-9 px-1">
                         <div class="at-icon-text">
                             <h5 class="box-title <?php echo $info_title_typography; ?>"><?php echo !empty($custom_word_12) ? $custom_word_12 : 'Remote'; ?></h5>
-                            <p class="box-description"><?php echo !empty($custom_word_13) ? $custom_word_13 : 'Home Office'; ?></p>
+                            <p class="box-description <?php echo $info_company_typography; ?>"><?php echo !empty($custom_word_13) ? $custom_word_13 : 'Home Office'; ?></p>
                         </div>    
                     </div>
                 </div>
