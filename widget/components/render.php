@@ -176,7 +176,7 @@ function renderHtml($settings){
                     <div class="col-8 col-md-9 px-1">
                         <div class="at-icon-text">
                             <h5 class="box-title <?php echo esc_attr($info_title_typography); ?>"><?php echo !empty($custom_word_16) ? esc_html($custom_word_16) : 'Salary'; ?></h5>
-                            <p class="box-description <?php echo esc_attr$info_company_typography); ?>">
+                            <p class="box-description <?php echo esc_attr($info_company_typography); ?>">
                                 <?php echo esc_html($posting_job_price); ?> 
                                 <?php echo $posting_job_max_price != '' ? "-esc_html($posting_job_max_price)" : ''; ?> 
                                 <?php echo esc_html($posting_job_currency); ?> / <?php echo esc_html($posting_job_per); ?>
