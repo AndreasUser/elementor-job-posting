@@ -106,3 +106,9 @@ background-color: #fff4ee;
     flex: 0 0 20% !important;
     max-width: 20% !important;
 }
+
+
+
+.bg-ground{
+	padding: 10px;
+}
