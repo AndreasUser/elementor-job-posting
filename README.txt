@@ -1,4 +1,4 @@
-=== Plugin Name ===
+=== Elementor Job Posting ===
 Contributors: Farjad Akbar (Developer) / Andreas Schudey (Conception)
 Tags: elementor, widget, job, schema, design
 Requires at least: WordPress 5.0, Elementor 2.0
@@ -9,17 +9,17 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Description ==
 
-The Plugin Name plugin is a powerful tool designed to seamlessly integrate with Elementor, enabling you to effortlessly create and display job details on your WordPress website. Whether you're a recruiter, employer, or running a job board, this plugin streamlines the process of showcasing job listings with beautiful design elements.
+The Plugin is a powerful addon for famous WordPress pagebuilder elementor.  It is designed to seamlessly integrate with Elementor, enabling you to effortlessly create and display job details on your WordPress website. Whether you're a recruiter, employer, or running a job board, this plugin streamlines the process of showcasing job listings with beautiful design elements.
 
-With Plugin Name, you can easily add job details and customize the design using the intuitive Elementor interface. Tailor the appearance to match your website's branding and style, ensuring a cohesive look and feel throughout your site.
+With Plugin Name, you can easily add and customize job details like job title, job description and many more using the intuitive Elementor interface. Tailor the appearance to match your website's branding and style, ensuring a cohesive look and feel throughout your site.
 
-One of the standout features of Plugin Name is its automatic schema generation functionality. By simply inputting job details, the plugin dynamically generates schema markup in compliance with structured data standards. This not only enhances the visual presentation of your job listings but also improves search engine visibility, potentially boosting your site's rankings.
+One of the standout features of Elementor Job Posting is its automatic schema generation functionality. By simply inputting job details, the plugin dynamically generates schema markup for jobs in compliance with structured data standards. This not only enhances the visual presentation of your job listings but also improves search engine visibility. The generated code for schema job posting  can result in the job posting page being displayed in the Google for Jobs box, although there is no guarantee of this.
 
 == Features ==
 
 - Seamlessly integrates with Elementor, providing a user-friendly interface for adding job details and designing job listings.
 - Customize the appearance of job listings to match your website's branding and style.
-- Automatic schema generation ensures your job listings are optimized for search engines and displayed prominently in search results.
+- Automatically generates the structured data code for job posting
 - Effortlessly create, edit, and manage job listings directly from the WordPress dashboard.
 - Responsive design ensures job listings look great on all devices, from desktops to smartphones.
 - Lightweight and optimized for performance to minimize impact on site speed and load times.
