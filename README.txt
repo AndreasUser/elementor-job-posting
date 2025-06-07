@@ -1,5 +1,5 @@
 === Plugin Name ===
-Contributors: Farjad Akbar
+Contributors: Farjad Akbar (Developer) / Andreas Schudey (Conception)
 Tags: elementor, widget, job, schema, design
 Requires at least: WordPress 5.0, Elementor 2.0
 Tested up to: WordPress 5.9
