@@ -1,339 +1,407 @@
 <?php
+/**
+ * Widget render.
+ *
+ * @package El_Job_Posting_Widget
+ */
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
+
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Background;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Border;
 
-
-function dimension($that, $section_id, $label, $selector, $usage){
-    $that->add_responsive_control(
-        'posting_'.$section_id,
-        [
-            'label' => esc_html( $label ),
-            'type' => Controls_Manager::DIMENSIONS,
-            'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
-            'default' => [''],
-            'selectors' => [
-                '{{WRAPPER}} ' . $selector => $usage . ': {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} !important;',
-            ],
-        ]
-    );
+/**
+ * Widget style dimension.
+ *
+ * @param object $el Elementor widget manager.
+ * @param string $section_id Section ID.
+ * @param string $label Section label.
+ * @param string $selector selector.
+ * @param string $usage usage.
+ * @return void
+ */
+function el_job_posting_widget_dimension( $el, $section_id, $label, $selector, $usage ) {
+	$el->add_responsive_control(
+		'posting_' . $section_id,
+		array(
+			'label'      => esc_html( $label ),
+			'type'       => Controls_Manager::DIMENSIONS,
+			'size_units' => array( 'px', '%', 'em', 'rem', 'custom' ),
+			'default'    => array( '' ),
+			'selectors'  => array(
+				'{{WRAPPER}} ' . $selector => $usage . ': {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} !important;',
+			),
+		)
+	);
 }
 
-function slider($that, $section_id, $label, $selector, $usage){
-    $that->add_responsive_control(
-        'posting_'.$section_id,
-        [
-            'label' => esc_html( $label ),
-            'type' => Controls_Manager::SLIDER,
-            'size_units' => [ 'px' ],
-            'range' => [
-                'px' => [
-                    'min' => 0,
-                    'max' => 100,
-                    'step' => 1,
-                ],
-            ],
-            'selectors' => [
-                '{{WRAPPER}} ' . $selector  => $usage . ': {{SIZE}}{{UNIT}}  !important;',
-            ],
-        ]
-    );
+/**
+ * Widget slider.
+ *
+ * @param object $el Elementor widget manager.
+ * @param string $section_id Section ID.
+ * @param string $label Section label.
+ * @param string $selector selector.
+ * @param string $usage usage.
+ * @return void
+ */
+function el_job_posting_widget_slider( $el, $section_id, $label, $selector, $usage ) {
+	$el->add_responsive_control(
+		'posting_' . $section_id,
+		array(
+			'label'      => esc_html( $label ),
+			'type'       => Controls_Manager::SLIDER,
+			'size_units' => array( 'px' ),
+			'range'      => array(
+				'px' => array(
+					'min'  => 0,
+					'max'  => 100,
+					'step' => 1,
+				),
+			),
+			'selectors'  => array(
+				'{{WRAPPER}} ' . $selector => $usage . ': {{SIZE}}{{UNIT}}  !important;',
+			),
+		)
+	);
 }
 
-function color($that, $section_id, $label, $selector, $usage){
-    $that->add_responsive_control(
-        'posting_'.$section_id,
-        [
-            'label' => esc_html( $label ),
-            'type' => Controls_Manager::COLOR,
-            'selectors' => [
-                '{{WRAPPER}} ' . $selector => $usage . ': {{VALUE}}  !important;',
-            ],
-        ]
-    );
-}
-function add_text_controls( $that, $section_id, $label, $selector ) {
-    $that->add_group_control(
-        Group_Control_Typography::get_type(),
-        [
-            'name'     => $section_id . '_typography',
-            'label'    => esc_html( $label . ' Typography' ),
-            'selector' => '{{WRAPPER}} ' . $selector,
-            'global' => [
-                'default' => \Elementor\Core\Kits\Documents\Tabs\Global_Typography::TYPOGRAPHY_PRIMARY,
-            ],
-        ]
-    );
-
-    $that->add_responsive_control(
-        $section_id . '_color',
-        [
-            'label'     => esc_html( $label . ' Color' ),
-            'type'      => \Elementor\Controls_Manager::COLOR,
-            'selectors' => [
-                '{{WRAPPER}} ' . $selector => 'color: {{VALUE}}  !important',
-            ],
-        ]
-    );
+/**
+ * Widget style color.
+ *
+ * @param object $el Elementor widget manager.
+ * @param string $section_id Section ID.
+ * @param string $label Section label.
+ * @param string $selector selector.
+ * @param string $usage usage.
+ * @return void
+ */
+function el_job_posting_widget_color( $el, $section_id, $label, $selector, $usage ) {
+	$el->add_responsive_control(
+		'posting_' . $section_id,
+		array(
+			'label'     => esc_html( $label ),
+			'type'      => Controls_Manager::COLOR,
+			'selectors' => array(
+				'{{WRAPPER}} ' . $selector => $usage . ': {{VALUE}}  !important;',
+			),
+		)
+	);
 }
 
-function add_background_border_control( $that, $control_id, $label, $selector ) {
-    $that->add_responsive_control(
-        $control_id . '_backgroundcolor',
-        [
-            'label' => esc_html( $label . ' Background Color',  'elementor-job-posting' ),
-            'type' => Controls_Manager::COLOR,
-            'selectors' => [
-                '{{WRAPPER}} '. $selector => 'background-color: {{VALUE}}  !important',
-            ],
-        ]
-    );
+/**
+ * Widget style text controls.
+ *
+ * @param object $el Elementor widget manager.
+ * @param string $section_id Section ID.
+ * @param string $label Section label.
+ * @param string $selector selector.
+ * @return void
+ */
+function el_job_posting_widget_add_text_controls( $el, $section_id, $label, $selector ) {
+	$el->add_group_control(
+		Group_Control_Typography::get_type(),
+		array(
+			'name'     => $section_id . '_typography',
+			'label'    => esc_html( $label . ' Typography' ),
+			'selector' => '{{WRAPPER}} ' . $selector,
+			'global'   => array(
+				'default' => \Elementor\Core\Kits\Documents\Tabs\Global_Typography::TYPOGRAPHY_PRIMARY,
+			),
+		)
+	);
 
-    $that->add_group_control(
-        Group_Control_Border::get_type(),
-        [
-            'name' => $control_id . '_border',
-            'selector' => '{{WRAPPER}} ' . $selector,
-        ]
-    );
+	$el->add_responsive_control(
+		$section_id . '_color',
+		array(
+			'label'     => esc_html( $label . ' Color' ),
+			'type'      => \Elementor\Controls_Manager::COLOR,
+			'selectors' => array(
+				'{{WRAPPER}} ' . $selector => 'color: {{VALUE}}  !important',
+			),
+		)
+	);
 }
 
+/**
+ * Widget style dimension.
+ *
+ * @param object $el Elementor widget manager.
+ * @param string $control_id Control ID.
+ * @param string $label Section label.
+ * @param string $selector selector.
+ * @return void
+ */
+function el_job_posting_widget_add_background_border_control( $el, $control_id, $label, $selector ) {
+	$el->add_responsive_control(
+		$control_id . '_backgroundcolor',
+		array(
+			'label'     => sprintf(
+				// translators: %s to $salary.
+				esc_html__( '%s Background Color', 'job-posting-widget-for-elementor' ),
+				$label
+			),
+			'type'      => Controls_Manager::COLOR,
+			'selectors' => array(
+				'{{WRAPPER}} ' . $selector => 'background-color: {{VALUE}} !important',
+			),
+		)
+	);
 
-// Header
-function listingHeaderStyle($that){
-    $that->start_controls_section(
-        'posting_header',
-        [
-            'label' => esc_html( 'Header' ),
-            'tab' => Controls_Manager::TAB_STYLE,
-        ]
-    );
-    
-    dimension($that, 'header_padding', 'Padding', '.job-header', 'padding');
-    $that->add_group_control(
-        Group_Control_Background::get_type(),
-        [
-            'name' => 'posting_header_background',
-            'types' => [ 'classic', 'gradient', 'video' ],
-            'selector' => '{{WRAPPER}} .job-header',
-        ]
-    );
-
-    $that->add_control(
-        'job_style_heading_image',
-        [
-            'label' => esc_html( 'Image' ),
-            'type' => Controls_Manager::HEADING,
-            'separator' => 'none',
-        ]
-    );
-    slider($that, 'image_width', 'Width', '.job-header .company-logo', 'width');
-    slider($that, 'image_height', 'Height', '.job-header .company-logo', 'height');
-    slider($that, 'image_border_radius', 'Border Radius', '.job-header .company-logo', 'border-radius');
-
-
-    $that->add_control(
-        'job_style_heading_title',
-        [
-            'label' => esc_html( 'Title' ),
-            'type' => Controls_Manager::HEADING,
-            'separator' => 'before',
-        ]
-    );
-
-    dimension($that, 'title_header_padding', 'Padding', '.job-header .job-title h2', 'padding');
-
-    add_text_controls($that, 'posting_header_title', 'Title', '.job-header .job-title h2');
-    add_background_border_control($that, 'posting_header_title', 'Title', '.job-header .job-title h2');
-
-
-    $that->add_control(
-        'job_style_heading_company',
-        [
-            'label' => esc_html( 'Company' ),
-            'type' => Controls_Manager::HEADING,
-            'separator' => 'before',
-        ]
-    );
-
-    dimension($that, 'company_header_padding', 'Padding', '.job-header .job-company', 'padding');
-
-    add_text_controls($that, 'posting_header_company', 'Company', '.job-header .job-company');
-    add_background_border_control($that, 'posting_header_company', 'Company', '.job-header .job-company');
-
-
-    $that->add_control(
-        'job_style_heading_date',
-        [
-            'label' => esc_html( 'Date' ),
-            'type' => Controls_Manager::HEADING,
-            'separator' => 'before',
-        ]
-    );
-
-    dimension($that, 'date_header_padding', 'Padding', '.job-header .job-date', 'padding');
-
-    add_text_controls($that, 'posting_header_date', 'Date', '.job-header .job-date');
-    add_background_border_control($that, 'posting_header_date', 'Date', '.job-header .job-date');
-
-    $that->end_controls_section();
+	$el->add_group_control(
+		Group_Control_Border::get_type(),
+		array(
+			'name'     => $control_id . '_border',
+			'selector' => '{{WRAPPER}} ' . $selector,
+		)
+	);
 }
 
-// Content
-function listingContentStyle($that){
-    $that->start_controls_section(
-        'posting_style_content',
-        [
-            'label' => esc_html( 'Job Description' ),
-            'tab' => Controls_Manager::TAB_STYLE,
-        ]
-    );
+/**
+ * Header style.
+ *
+ * @param object $el Elementor widget manager.
+ * @return void
+ */
+function el_job_posting_widget_listing_header_style( $el ) {
+	$el->start_controls_section(
+		'posting_header',
+		array(
+			'label' => esc_html__( 'Header', 'job-posting-widget-for-elementor' ),
+			'tab'   => Controls_Manager::TAB_STYLE,
+		)
+	);
 
-    $that->add_group_control(
-        Group_Control_Background::get_type(),
-        [
-            'name' => 'posting_content_background',
-            'types' => [ 'classic', 'gradient', 'video' ],
-            'selector' => '{{WRAPPER}} .job-detail',
-        ]
-    );
+	el_job_posting_widget_dimension( $el, 'header_padding', 'Padding', '.job-header', 'padding' );
+	$el->add_group_control(
+		Group_Control_Background::get_type(),
+		array(
+			'name'     => 'posting_header_background',
+			'types'    => array( 'classic', 'gradient', 'video' ),
+			'selector' => '{{WRAPPER}} .job-header',
+		)
+	);
 
+	$el->add_control(
+		'job_style_heading_image',
+		array(
+			'label'     => esc_html__( 'Image', 'job-posting-widget-for-elementor' ),
+			'type'      => Controls_Manager::HEADING,
+			'separator' => 'none',
+		)
+	);
+	el_job_posting_widget_slider( $el, 'image_width', esc_html__( 'Width', 'job-posting-widget-for-elementor' ), '.job-header .company-logo', 'width' );
+	el_job_posting_widget_slider( $el, 'image_height', esc_html__( 'Height', 'job-posting-widget-for-elementor' ), '.job-header .company-logo', 'height' );
+	el_job_posting_widget_slider( $el, 'image_border_radius', esc_html__( 'Border Radius', 'job-posting-widget-for-elementor' ), '.job-header .company-logo', 'border-radius' );
 
-    dimension($that, 'description_padding', 'Padding', '.job-detail', 'padding');
+	$el->add_control(
+		'job_style_heading_title',
+		array(
+			'label'     => esc_html__( 'Title', 'job-posting-widget-for-elementor' ),
+			'type'      => Controls_Manager::HEADING,
+			'separator' => 'before',
+		)
+	);
 
-    add_text_controls($that, 'posting_description', 'Description', '.job-detail');
-    add_background_border_control($that, 'posting_description', 'Description', '.job-detail');
+	el_job_posting_widget_dimension( $el, 'title_header_padding', esc_html__( 'Padding', 'job-posting-widget-for-elementor' ), '.job-header .job-title h2', 'padding' );
 
-    $that->end_controls_section();
+	el_job_posting_widget_add_text_controls( $el, 'posting_header_title', esc_html__( 'Title', 'job-posting-widget-for-elementor' ), '.job-header .job-title h2' );
+	el_job_posting_widget_add_background_border_control( $el, 'posting_header_title', esc_html__( 'Title', 'job-posting-widget-for-elementor' ), '.job-header .job-title h2' );
+
+	$el->add_control(
+		'job_style_heading_company',
+		array(
+			'label'     => esc_html__( 'Company', 'job-posting-widget-for-elementor' ),
+			'type'      => Controls_Manager::HEADING,
+			'separator' => 'before',
+		)
+	);
+
+	el_job_posting_widget_dimension( $el, 'company_header_padding', esc_html__( 'Padding', 'job-posting-widget-for-elementor' ), '.job-header .job-company', 'padding' );
+
+	el_job_posting_widget_add_text_controls( $el, 'posting_header_company', esc_html__( 'Company', 'job-posting-widget-for-elementor' ), '.job-header .job-company' );
+	el_job_posting_widget_add_background_border_control( $el, 'posting_header_company', esc_html__( 'Company', 'job-posting-widget-for-elementor' ), '.job-header .job-company' );
+
+	$el->add_control(
+		'job_style_heading_date',
+		array(
+			'label'     => esc_html__( 'Date', 'job-posting-widget-for-elementor' ),
+			'type'      => Controls_Manager::HEADING,
+			'separator' => 'before',
+		)
+	);
+
+	el_job_posting_widget_dimension( $el, 'date_header_padding', esc_html__( 'Padding', 'job-posting-widget-for-elementor' ), '.job-header .job-date', 'padding' );
+
+	el_job_posting_widget_add_text_controls( $el, 'posting_header_date', esc_html__( 'Date', 'job-posting-widget-for-elementor' ), '.job-header .job-date' );
+	el_job_posting_widget_add_background_border_control( $el, 'posting_header_date', esc_html__( 'Date', 'job-posting-widget-for-elementor' ), '.job-header .job-date' );
+
+	$el->end_controls_section();
 }
 
-// More Info
-function listingInfoStyle($that){
-    $that->start_controls_section(
-        'posting_more_infobox',
-        [
-            'label' => esc_html( 'Further information' ),
-            'tab' => Controls_Manager::TAB_STYLE,
-        ]
-    );
+/**
+ * Listing content style.
+ *
+ * @param object $el Elementor widget manager.
+ * @return void
+ */
+function el_job_posting_widget_listing_content_style( $el ) {
+	$el->start_controls_section(
+		'posting_style_content',
+		array(
+			'label' => esc_html__( 'Job Description', 'job-posting-widget-for-elementor' ),
+			'tab'   => Controls_Manager::TAB_STYLE,
+		)
+	);
 
-    dimension($that, 'infobox_padding', 'Padding', '.info-box', 'padding');
+	$el->add_group_control(
+		Group_Control_Background::get_type(),
+		array(
+			'name'     => 'posting_content_background',
+			'types'    => array( 'classic', 'gradient', 'video' ),
+			'selector' => '{{WRAPPER}} .job-detail',
+		)
+	);
 
-    
-    $that->add_responsive_control(
-        'posting_infobox_icon_box_row_gap',
-        [
-            'label' => 'Row Gap',
-            'type' => Controls_Manager::SLIDER,
-            'size_units' => [ 'px' ],
-            'range' => [
-                'px' => [
-                    'min' => 0,
-                    'max' => 100,
-                    'step' => 1,
-                ],
-            ],
-            'default' => [
-                'unit' => 'px',
-                'size' => 10,
-            ],
-            'selectors' => [
-                '{{WRAPPER}} .info-box .icon-box'  => 'margin-bottom: {{SIZE}}{{UNIT}}',
-            ],
-        ]
-    );
+	el_job_posting_widget_dimension( $el, 'description_padding', esc_html__( 'Padding', 'job-posting-widget-for-elementor' ), '.job-detail', 'padding' );
 
-    $that->add_group_control(
-        Group_Control_Background::get_type(),
-        [
-            'name' => 'posting_infobox_background',
-            'types' => [ 'classic', 'gradient', 'video' ],
-            'selector' => '{{WRAPPER}} .info-box',
-        ]
-    );
+	el_job_posting_widget_add_text_controls( $el, 'posting_description', esc_html__( 'Description', 'job-posting-widget-for-elementor' ), '.job-detail' );
+	el_job_posting_widget_add_background_border_control( $el, 'posting_description', esc_html__( 'Description', 'job-posting-widget-for-elementor' ), '.job-detail' );
 
-
-    $that->add_control(
-        'job_style_heading_icon',
-        [
-            'label' => esc_html( 'Icon' ),
-            'type' => Controls_Manager::HEADING,
-            'separator' => 'before',
-        ]
-    );
-
-    
-    $that->add_responsive_control(
-        'posting_infobox_icon_size',
-        [
-            'label' => 'Size',
-            'type' => Controls_Manager::SLIDER,
-            'size_units' => [ 'px' ],
-            'range' => [
-                'px' => [
-                    'min' => 0,
-                    'max' => 100,
-                    'step' => 1,
-                ],
-            ],
-            'selectors' => [
-                '{{WRAPPER}} .info-box .at-icon-box-icon i, {{WRAPPER}} .info-box .at-icon-box-icon svg'  => 'font-size: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}}; width: {{SIZE}}{{UNIT}}',
-            ],
-        ]
-    );
-    $that->add_responsive_control(
-        'posting_infobox_icon_color',
-        [
-            'label' => 'Color',
-            'type' => Controls_Manager::COLOR,
-            'selectors' => [
-                '{{WRAPPER}} .info-box .at-icon-box-icon i, {{WRAPPER}} .info-box .at-icon-box-icon svg' => 'color: {{VALUE}}; fill: {{VALUE}};',
-            ],
-        ]
-    );
-
-
-
-    add_background_border_control($that, 'posting_infobox_icon', 'Icon', '.info-box .at-icon-box-icon');
-
-    slider($that, 'infobox_icon_width', 'Icon Box Width', '.info-box .at-icon-box-icon', 'width');
-    slider($that, 'infobox_icon_height', 'Icon Box Height', '.info-box .at-icon-box-icon', 'height');
-
- 
-    dimension($that, 'infobox_icon_padding', 'Padding', '.info-box .at-icon-box-icon', 'padding');
-    dimension($that, 'infobox_icon_margin', 'Margin', '.info-box .at-icon-box-icon', 'margin');
-
-    
-    
-
-    $that->add_control(
-        'job_style_heading_info_title',
-        [
-            'label' => esc_html( 'Title' ),
-            'type' => Controls_Manager::HEADING,
-            'separator' => 'before',
-        ]
-    );
-    add_text_controls($that, 'posting_infobox_title', 'Title', '.info-box .at-icon-text .box-title');
-    dimension($that, 'infobox_title_padding', 'Padding', '.info-box .at-icon-text', 'padding');
- 
-
-    $that->add_control(
-        'job_style_heading_info_description',
-        [
-            'label' => esc_html( 'Description' ),
-            'type' => Controls_Manager::HEADING,
-            'separator' => 'before',
-        ]
-    );
-    add_text_controls($that, 'posting_infobox_description', 'Description', '.info-box .at-icon-text .box-description');
- 
-    $that->end_controls_section();
+	$el->end_controls_section();
 }
 
-function styling_setting($that){
-    listingHeaderStyle($that);
-    listingContentStyle($that);
-    listingInfoStyle($that);
+/**
+ * Listing more info style.
+ *
+ * @param object $el Elementor widget manager.
+ * @return void
+ */
+function el_job_posting_widget_listing_info_style( $el ) {
+	$el->start_controls_section(
+		'posting_more_infobox',
+		array(
+			'label' => esc_html__( 'Further information', 'job-posting-widget-for-elementor' ),
+			'tab'   => Controls_Manager::TAB_STYLE,
+		)
+	);
+
+	el_job_posting_widget_dimension( $el, 'infobox_padding', esc_html__( 'Padding', 'job-posting-widget-for-elementor' ), '.info-box', 'padding' );
+
+	$el->add_responsive_control(
+		'posting_infobox_icon_box_row_gap',
+		array(
+			'label'      => esc_html__( 'Row Gap', 'job-posting-widget-for-elementor' ),
+			'type'       => Controls_Manager::SLIDER,
+			'size_units' => array( 'px' ),
+			'range'      => array(
+				'px' => array(
+					'min'  => 0,
+					'max'  => 100,
+					'step' => 1,
+				),
+			),
+			'default'    => array(
+				'unit' => 'px',
+				'size' => 10,
+			),
+			'selectors'  => array(
+				'{{WRAPPER}} .info-box .icon-box' => 'margin-bottom: {{SIZE}}{{UNIT}}',
+			),
+		)
+	);
+
+	$el->add_group_control(
+		Group_Control_Background::get_type(),
+		array(
+			'name'     => 'posting_infobox_background',
+			'types'    => array( 'classic', 'gradient', 'video' ),
+			'selector' => '{{WRAPPER}} .info-box',
+		)
+	);
+
+	$el->add_control(
+		'job_style_heading_icon',
+		array(
+			'label'     => esc_html__( 'Icon', 'job-posting-widget-for-elementor' ),
+			'type'      => Controls_Manager::HEADING,
+			'separator' => 'before',
+		)
+	);
+
+	$el->add_responsive_control(
+		'posting_infobox_icon_size',
+		array(
+			'label'      => esc_html__( 'Size', 'job-posting-widget-for-elementor' ),
+			'type'       => Controls_Manager::SLIDER,
+			'size_units' => array( 'px' ),
+			'range'      => array(
+				'px' => array(
+					'min'  => 0,
+					'max'  => 100,
+					'step' => 1,
+				),
+			),
+			'selectors'  => array(
+				'{{WRAPPER}} .info-box .at-icon-box-icon i, {{WRAPPER}} .info-box .at-icon-box-icon svg'  => 'font-size: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}}; width: {{SIZE}}{{UNIT}}',
+			),
+		)
+	);
+	$el->add_responsive_control(
+		'posting_infobox_icon_color',
+		array(
+			'label'     => esc_html__( 'Color', 'job-posting-widget-for-elementor' ),
+			'type'      => Controls_Manager::COLOR,
+			'selectors' => array(
+				'{{WRAPPER}} .info-box .at-icon-box-icon i, {{WRAPPER}} .info-box .at-icon-box-icon svg' => 'color: {{VALUE}}; fill: {{VALUE}};',
+			),
+		)
+	);
+
+	el_job_posting_widget_add_background_border_control( $el, 'posting_infobox_icon', esc_html__( 'Icon', 'job-posting-widget-for-elementor' ), '.info-box .at-icon-box-icon' );
+
+	el_job_posting_widget_slider( $el, 'infobox_icon_width', esc_html__( 'Icon Box Width', 'job-posting-widget-for-elementor' ), '.info-box .at-icon-box-icon', 'width' );
+	el_job_posting_widget_slider( $el, 'infobox_icon_height', esc_html__( 'Icon Box Height', 'job-posting-widget-for-elementor' ), '.info-box .at-icon-box-icon', 'height' );
+
+	el_job_posting_widget_dimension( $el, 'infobox_icon_padding', esc_html__( 'Padding', 'job-posting-widget-for-elementor' ), '.info-box .at-icon-box-icon', 'padding' );
+	el_job_posting_widget_dimension( $el, 'infobox_icon_margin', esc_html__( 'Margin', 'job-posting-widget-for-elementor' ), '.info-box .at-icon-box-icon', 'margin' );
+
+	$el->add_control(
+		'job_style_heading_info_title',
+		array(
+			'label'     => esc_html__( 'Title', 'job-posting-widget-for-elementor' ),
+			'type'      => Controls_Manager::HEADING,
+			'separator' => 'before',
+		)
+	);
+	el_job_posting_widget_add_text_controls( $el, 'posting_infobox_title', esc_html__( 'Title', 'job-posting-widget-for-elementor' ), '.info-box .at-icon-text .box-title' );
+	el_job_posting_widget_dimension( $el, 'infobox_title_padding', esc_html__( 'Padding', 'job-posting-widget-for-elementor' ), '.info-box .at-icon-text', 'padding' );
+
+	$el->add_control(
+		'job_style_heading_info_description',
+		array(
+			'label'     => esc_html__( 'Description', 'job-posting-widget-for-elementor' ),
+			'type'      => Controls_Manager::HEADING,
+			'separator' => 'before',
+		)
+	);
+	el_job_posting_widget_add_text_controls( $el, 'posting_infobox_description', esc_html__( 'Description', 'job-posting-widget-for-elementor' ), '.info-box .at-icon-text .box-description' );
+
+	$el->end_controls_section();
+}
+
+/**
+ * Styling setting.
+ *
+ * @param object $el Elementor widget manager.
+ * @return void
+ */
+function el_job_posting_widget_styling_setting( $el ) {
+	el_job_posting_widget_listing_header_style( $el );
+	el_job_posting_widget_listing_content_style( $el );
+	el_job_posting_widget_listing_info_style( $el );
 }
