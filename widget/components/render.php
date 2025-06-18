@@ -160,7 +160,6 @@ function el_job_posting_widget_render_html( $settings ) {
 									$remote_icon,
 									array(
 										'aria-hidden' => 'true',
-										'style'       => 'width: 20px; height: 20px;',
 									)
 								);
 							?>
@@ -186,7 +185,6 @@ function el_job_posting_widget_render_html( $settings ) {
 									$location_icon,
 									array(
 										'aria-hidden' => 'true',
-										'style'       => 'width: 20px; height: 20px;',
 									)
 								);
 							?>
@@ -213,7 +211,6 @@ function el_job_posting_widget_render_html( $settings ) {
 									$job_type_icon,
 									array(
 										'aria-hidden' => 'true',
-										'style'       => 'width: 20px; height: 20px;',
 									)
 								);
 							?>
@@ -240,7 +237,6 @@ function el_job_posting_widget_render_html( $settings ) {
 									$salary_icon,
 									array(
 										'aria-hidden' => 'true',
-										'style'       => 'width: 20px; height: 20px;',
 									)
 								);
 							?>
@@ -270,7 +266,6 @@ function el_job_posting_widget_render_html( $settings ) {
 									$date_icon,
 									array(
 										'aria-hidden' => 'true',
-										'style'       => 'width: 20px; height: 20px;',
 									)
 								);
 							?>
