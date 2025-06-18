@@ -66,7 +66,7 @@ class El_Job_Posting_Widget extends Widget_Base {
 	 * Enqueue style.
 	 */
 	public function get_style_depends() {
-		wp_enqueue_style( 'el-job-posting-style', plugin_dir_url( __DIR__ ) . '/assets/css/style.css', array(), true );
+		wp_enqueue_style( 'el-job-posting-style', plugin_dir_url( __DIR__ ) . 'assets/css/style.css', array(), true );
 		return array( 'el-job-posting-style' );
 	}
 
