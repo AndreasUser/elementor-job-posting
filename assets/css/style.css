@@ -118,12 +118,6 @@
     margin-top: 0 !important;
 }
 
-.job-listing-container .job-header .job-date.no-typography {
-    display: flex;
-    align-items: center;
-    gap: 3px;
-}
-
 .job-listing-container .job-header .job-date.no-typography .e-font-icon-svg {
     fill: rgba(0, 0, 0, 0.6);
 }
@@ -142,9 +136,6 @@
 .job-listing-container .info-box {
     padding-left: auto;
     padding-right: auto;
-}
-.job-listing-container .info-box .row {
-    align-items: center;
 }
 
 .job-listing-container .info-box .icon-box {
