@@ -311,7 +311,7 @@ function el_job_posting_widget_render_html( $settings ) {
 			'name'  => 'yes' === $posting_job_remote ? $posting_job_country : null,
 		),
 		'jobLocationType'               => 'yes' === $posting_job_remote ? 'TELECOMMUTE' : null,
-		'jobLocation'                   => 'yes' === $posting_job_remote ? array(
+		'jobLocation'                   => 'yes' !== $posting_job_remote ? array(
 			'@type'   => 'Place',
 			'address' => array(
 				'@type'           => 'PostalAddress',
